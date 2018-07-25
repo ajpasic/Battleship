@@ -1,6 +1,7 @@
 clc, clear;
-% the game starts here
+% Check device manager for COM #
 a = arduino('COM3','Uno');
+% the game starts here
 % set the number of battleships
 bsnum = 2;
 % set the position of battleships
