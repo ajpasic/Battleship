@@ -1,34 +1,72 @@
-clc, clear;
-% Check device manager for COM #
-a = arduino('COM3','Uno');
-% the game starts here
-% set the number of battleships
-bsnum = 2;
-% set the position of battleships
-shiploc = ShipLocations(2);
-disp('Battleship locations');
-disp(shiploc);
-% prompt user for row and column of the battleships
+% first we establish connection and clear all existing variables
+clc, clear
+a = arduino();
 
-% for i = 1:1:3
-writeDigitalPin(a, 'D12', shiploc(1));
-writeDigitalPin(a, 'D11', shiploc(4));
-writeDigitalPin(a, 'D10', shiploc(7));
-writeDigitalPin(a, 'D8', shiploc(2));
-writeDigitalPin(a, 'D7', shiploc(5));
-writeDigitalPin(a, 'D6', shiploc(8));
-writeDigitalPin(a, 'D4', shiploc(3));
-writeDigitalPin(a, 'D3', shiploc(6));
-writeDigitalPin(a, 'D2', shiploc(9));
-pause(1)
-% writeDigitalPin(a, 'D12', 0);
-% writeDigitalPin(a, 'D11', 0);
-% writeDigitalPin(a, 'D10', 0);
-% writeDigitalPin(a, 'D8', 0);
-% writeDigitalPin(a, 'D7', 0);
-% writeDigitalPin(a, 'D6', 0);
-% writeDigitalPin(a, 'D4', 0);
-% writeDigitalPin(a, 'D3', 0);
-% writeDigitalPin(a, 'D2', 0);
-% pause(1)
-% end
+% define important variables
+Adi_pins = ["D12", "D11", "D10";
+            "D8", "D7", "D6";
+            "D4", "D3", "D2"]; % Adi's configuration
+    
+Vincent_pins = ["D2", "D3", "D4";
+                "D7", "D8", "D9";
+                "D11", "D12", "D13"]; % Vincent's configuration
+            
+pins = Adi_pins;
+            
+% create a board "mask"
+board = zeros(3);
+board(4) = 1;
+
+% write values to pins
+UpdateBoard(a,board, pins)
+
+z = 0;
+while z ~= 13 % while enter key has not been pressed
+    z = GetKey;
+    [row, col] = find(board == 1); % find position of current LED
+    switch z
+        case 28
+            % we pressed the left key
+            if col - 1 < 1 
+                disp('that is not a valid movement')
+                continue
+            else 
+                board(row, col - 1) = 1;
+            end
+        case 29
+            % we pressed the right key
+            if col + 1 > 3 
+                disp('that is not a valid movement')
+                continue
+            else 
+                board(row, col + 1) = 1;
+            end
+        case 30
+            % we pressed the up key
+            if row - 1 < 1 
+                disp('that is not a valid movement')
+                continue
+            else 
+                board(row - 1, col) = 1;
+            end
+        case 31
+            % we pressed the down key
+            if row + 1 > 3 
+                disp('that is not a valid movement')
+                continue
+            else 
+                board(row + 1, col) = 1;
+            end
+        case 13
+            % we pressed the enter key - the loop will exit
+        otherwise
+            % a bad key was pressed, prompt user for another key press
+            disp('INCORRECT')
+    end
+    if z ~= 13 % prevents board from being erased on LED selection
+        board(row, col) = 0; % erase old position
+    end
+    UpdateBoard(a, board, pins) % update the board
+end
+
+    
