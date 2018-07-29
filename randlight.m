@@ -2,11 +2,10 @@ clear, clc
 a = arduino('COM3');
 counter = 0;
 
-% make an array of pin values
+% make an array of pin numbers
 pins = ["D12", "D11", "D10";
         "D8", "D7", "D6";
         "D4", "D3", "D2"];
-% rotate the pins array 270 degrees clockwise
 
 while counter < 100
     numlightened = randi([3,7]); % decide # of lights lightened

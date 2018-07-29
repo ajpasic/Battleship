@@ -1,0 +1,3 @@
+k = waitforbuttonpress;
+value = double(get(gcf,'CurrentCharacter'));
+while value ~= 13
