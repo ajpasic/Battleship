@@ -18,7 +18,7 @@ board = zeros(3);
 board(1) = 1;
 
 % write values to pins
-UpdateBoard(a,board, pins)
+UpdateBoard(a, board, pins)
 
 % make ship locations array
 NumShips = 1;
