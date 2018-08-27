@@ -15,26 +15,57 @@ pins = Adi_pins;
             
 % create a board "mask"
 board = zeros(3);
-board(1) = 1;
+% board(1) = 1;
 
 % write values to pins
-UpdateBoard(a, board, pins)
+UpdateBoard(a, pins, board)
+
+pause
+board = zeros(3);
+UpdateBoard(a, pins, board)
+for i=1:1:3
+    board = ones(3);
+    UpdateBoard(a, pins, board)
+    pause(1)
+    board = zeros(3);
+    UpdateBoard(a, pins, board)
+    pause(1)
+end
+
+% create and run RandPin function
+pause
+for i=1:1:10
+    board = RandPin();
+    UpdateBoard(a, pins, board)
+    pause(2)
+end
+
+board = zeros(3);
+UpdateBoard(a, pins, board)
+
+startLoc = input('Pick a starting location for the spiral (must be a corner)');
+
+
+
+
+
+
 
 % make ship locations array
-NumShips = 1;
-shipLoc = ShipLocations(NumShips);
-
-[row, col] = MakeSelection(a, board, pins);
-
-% compare selection to ship location(s)
-for i = 1:1:8
-    if shipLoc(row, col) == 1 % if we hit the ship
-        disp('Hit')
-        break
-    else
-        disp(['Miss,', num2str(8-i), ' tries remaining'])
-        [row, col] = MakeSelection(a, board, pins);
-    end
-    disp(shipLoc)
-    disp([row, col])
-end    
+% NumShips = 1;
+% shipLoc = ShipLocations(NumShips);
+% 
+% [row, col] = MakeSelection(a, board, pins);
+% 
+% % compare selection to ship location(s)
+% for i = 1:1:8
+%     if shipLoc(row, col) == 1 % if we hit the ship
+%         disp('Hit')
+%         break
+%     else
+%         disp(['Miss,', num2str(8-i), ' tries remaining'])
+%         [row, col] = MakeSelection(a, board, pins);
+%     end
+%     disp(shipLoc)
+%     disp([row, col])
+% end    
