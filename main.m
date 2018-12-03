@@ -45,33 +45,33 @@ pause
 disp(' ')
 
 % Task 2.4 - Blink LEDs in Patterns
-disp('Task 2.4 - Blink LEDs in Patterns')
-board = [1,0,1;0,1,0;1,0,1];
-UpdateBoard(a,board,pins)
-pause(5)
-board = [0,1,0;1,1,1;0,1,0];
-UpdateBoard(a,board,pins)
-pause(5)
-board = zeros(3);
-UpdateBoard(a,board,pins)
-choice = input('Choose either "x" or "+": ','s');
-if choice == "x"
-    board = [1,0,1;0,1,0;1,0,1];
-elseif choice == "+"
-    board = [0,1,0;1,1,1;0,1,0];
-else
-    disp("You did not input a correct value")
-end
-UpdateBoard(a,board,pins)
-pause(5)
-board = zeros(3);
-UpdateBoard(a,board,pins)
-disp('PAUSED')
-pause
-disp(' ')
+% disp('Task 2.4 - Blink LEDs in Patterns')
+% board = [1,0,1;0,1,0;1,0,1];
+% UpdateBoard(a,board,pins)
+% pause(5)
+% board = [0,1,0;1,1,1;0,1,0];
+% UpdateBoard(a,board,pins)
+% pause(5)
+% board = zeros(3);
+% UpdateBoard(a,board,pins)
+% choice = input('Choose either "x" or "+": ','s');
+% if choice == "x"
+%     board = [1,0,1;0,1,0;1,0,1];
+% elseif choice == "+"
+%     board = [0,1,0;1,1,1;0,1,0];
+% else
+%     disp("You did not input a correct value")
+% end
+% UpdateBoard(a,board,pins)
+% pause(5)
+% board = zeros(3);
+% UpdateBoard(a,board,pins)
+% disp('PAUSED')
+% pause
+% disp(' ')
 
-% Task 2.5 - Manipulate LEDs from a Data File
-disp('Task 2.5 - Manipulate LEDs from a Data File')
+% Task 2.4 - Manipulate LEDs from a Data File
+disp('Task 2.4 - Manipulate LEDs from a Data File')
 lightsequence = load('light_sequence.csv');
 for i=1:1:9
     [r,c] = find(lightsequence==i);
@@ -85,8 +85,8 @@ disp('PAUSED')
 pause
 disp(' ')
 
-% Task 2.6 - Fill Up Board in Random Order
-disp('Task 2.6 - Fill up Board in Random Order')
+% Task 2.5 - Fill Up Board in Random Order
+disp('Task 2.5 - Fill up Board in Random Order')
 inputRow = input('Select a row: ');
 inputCol = input('Select a column: ');
 board(inputRow,inputCol) = 1;
@@ -110,8 +110,8 @@ disp('PAUSED')
 pause
 disp(' ')
 
-% Task 2.7 - Create RandLight() Function
-disp('Task 2.7 - Create RandLight() Function')
+% Task 2.6 - Create RandLight() Function
+disp('Task 2.6 - Create RandLight() Function')
 for i=1:1:5
     RandLight(a,board,pins)
     pause(5)
@@ -122,8 +122,8 @@ disp('PAUSED')
 pause
 disp(' ')
 
-% Task 2.8 - Fill Up Board in Cascading Order
-disp('Task 2.8 - Fill Up Board in Cascading Order')
+% Task 2.7 - Fill Up Board in Cascading Order
+disp('Task 2.7 - Fill Up Board in Cascading Order')
 inputRow = input('Select a row: ');
 inputCol = input('Select a column: ');
 board(inputRow,inputCol) = 1;
