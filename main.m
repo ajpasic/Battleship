@@ -44,7 +44,8 @@ disp('PAUSED')
 pause
 disp(' ')
 
-% Task 2.4 - Blink LEDs in Patterns
+% Task 2.4 - Blink LEDs in Patterns - THIS TASK WAS REMOVED FROM FINAL
+% PROJECT
 % disp('Task 2.4 - Blink LEDs in Patterns')
 % board = [1,0,1;0,1,0;1,0,1];
 % UpdateBoard(a,board,pins)
