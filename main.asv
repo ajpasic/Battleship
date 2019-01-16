@@ -10,17 +10,7 @@ disp(' ')
 a = arduino();
 
 % Task 1.4 - Create Grid of Lights
-% The values in this grid will depend on which pins are connected to which
-% LED
-pins = ["D2","D3","D4";"D7","D8","D9";"D11","D12","D13"];
 
-% Task 1.5 - Test LEDs
-% cycle through pins to test them
-for i = 1:1:9
-    writeDigitalPin(a, pins(i), 1)
-    pause(1)
-    writeDigitalPin(a, pins(i), 0)
-end
 
 %% Section 2 - Programming the Arduino
 disp('Section 2 - Programming the Arduino')
