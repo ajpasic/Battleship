@@ -1,3 +1,4 @@
 Things to ask Fritz
 
 1. are we listed as TAs on Blackboard
+2. will links work on instruction file (pdf?)
